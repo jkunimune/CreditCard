@@ -30,4 +30,40 @@ public class CreditCard {
       return 4;
     return 0; // otherwise, other
   }
+  
+  
+  public String randomNumber(int type) {
+    String randNum;
+    switch (type) {
+      case 1:
+        randNum = Integer.toString((int)(Math.random()*5+51));
+        break;
+      case 2:
+        randNum = "4";
+        break;
+      case 3:
+        randNum = Integer.toString((int)(Math.random()*2)*3+34);
+        break;
+      case 4:
+        randNum = "6011";
+        break;
+      case 5:
+        if (Math.random()<.5)
+          randNum = Integer.toString((int)(Math.random()*2)*2+36);
+        else
+          randNum = Integer.toString((int)((Math.random()*2)*6+300));
+        break;
+      default:
+        randNum = "";
+    }
+    
+    for (int i = randNum.length(); i < 15; i ++)
+      randNum += Integer.toString((int)(Math.random()*10));
+    
+    for (int i = 0; i < 10; i ++)
+      if (verify(randNum + i))
+        return randNum + i;
+    
+    return "ERROR";
+  }
 }
