@@ -1,0 +1,34 @@
+// Credit Card verification driver
+
+import java.util.Scanner;
+
+public class CreditCardLabDriver
+{
+
+  public static void main(String[] args){
+    Scanner in = new Scanner(System.in);
+    String[] types = {"none", "Master Card", "Visa", "American Express", "Discover", "Diners Club/ Carte Blanche"};
+
+
+    CreditCard test = new CreditCard();
+
+    while (true) {
+      System.out.println("Enter a number to be tested");
+      String num = in.next();
+
+      System.out.print("Is "+num+" a valid credit card number? ");
+      if (test.verify(num))
+        System.out.println("Yes.");
+      else
+        System.out.println("No.");
+      
+      System.out.print("Credit card type is: ");
+      if (test.verify(num))
+        System.out.println(types[test.findType(num)]);
+      else
+        System.out.println("It's not even a real credit card.");
+      
+      System.out.println();
+    }
+  }
+}
