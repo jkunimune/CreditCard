@@ -7,15 +7,16 @@ public class CreditCardLabDriver
 
   public static void main(String[] args){
     Scanner in = new Scanner(System.in);
-    String[] types = {"none", "Master Card", "Visa", "American Express", "Discover", "Diners Club/ Carte Blanche"};
+    String[] types = {"Invalid", "Master Card", "Visa", "American Express", "Discover", "Diners Club/ Carte Blanche"};
 
 
     CreditCard test = new CreditCard();
 
     while (true) {
       System.out.println("Do you want to test or generate a number?");
-      String temp = in.nextLine();
-      if (temp.equalsIgnoreCase("test")) {
+      String choice = in.nextLine();
+      
+      if (choice.indexOf("est") >= 0) {
         System.out.println("Okay. Enter a number to be tested");
         String num = in.nextLine();
         
@@ -26,12 +27,11 @@ public class CreditCardLabDriver
           System.out.println("No.");
         
         System.out.print("Credit card type is: ");
-        if (test.verify(num))
-          System.out.println(types[test.findType(num)]);
-        else
-          System.out.println("It's not even a real credit card.");
+        System.out.println(types[test.findType(num)]);
+        System.out.println("");
       }
-      else {
+      
+      else if (choice.indexOf("enerate") >= 0) {
         System.out.println("Generate it is. What kind of card do you want?");
         String type = in.nextLine();
         
@@ -52,10 +52,11 @@ public class CreditCardLabDriver
                  type.equalsIgnoreCase("Random"))
           System.out.println(test.randomNumber(0));
         else
-          System.out.println("I don't know what that is. Here, have a random one.\n"+test.randomNumber(0));
+          System.out.println("I don't know what that is. Here, have a random one.\n"+test.randomNumber(0)+"\n");
       }
       
-      System.out.println();
+      else
+        System.out.print("I'm afraid I don't understand. Please explicitly state which one you want. ");
     }
   }
 }

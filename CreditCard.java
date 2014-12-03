@@ -1,5 +1,11 @@
 public class CreditCard {
   public boolean verify(String num) {
+    if (num.length() < 12 || num.length() > 16) // return false if invalid length
+      return false;
+    
+    if (findType(num) == 0) // return false if no type
+      return false;
+    
     int sum = 0; // initialize sum variable
     
     for (int i = num.length()-1; i >= 0; i --) { // for all of the characers in num

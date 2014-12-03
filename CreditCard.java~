@@ -34,7 +34,7 @@ public class CreditCard {
   
   public String randomNumber(int type) {
     String randNum;
-    switch (type) {
+    switch (type) { // initialises the output so that it starts with the proper characters
       case 1:
         randNum = Integer.toString((int)(Math.random()*5+51));
         break;
@@ -57,13 +57,13 @@ public class CreditCard {
         randNum = "";
     }
     
-    for (int i = randNum.length(); i < 15; i ++)
+    for (int i = randNum.length(); i < 15; i ++) // puts on random numbers until length is 15
       randNum += Integer.toString((int)(Math.random()*10));
     
-    for (int i = 0; i < 10; i ++)
+    for (int i = 0; i < 10; i ++) // checks 0-9 to see which final digit will make it valid (there is always exactly one)
       if (verify(randNum + i))
         return randNum + i;
     
-    return "ERROR";
+    return "ERROR"; // if, somehow, it does not find it, then math is broken so return "ERROR"
   }
 }
